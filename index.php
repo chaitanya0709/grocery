@@ -3,10 +3,10 @@
 include 'dbConfig.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
+    $username = $_POST["email"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM login where username='".$username."' AND password='".$password."';";
+    $sql = "SELECT * FROM login where Email='".$username."' AND password='".$password."';";
     $result = $conn->query($sql);
     
     $usertype = "";
@@ -48,11 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<form action="#" method="post">
 				<img class="img1" src="img/newicon.png" alt="login png">
                 <h1>Login</h1>
-				<input type="text" placeholder="Username" name="username" required/>
+				<input type="text" placeholder="Email@gmail.com" name="email" required/>
 				<input type="password" placeholder="Password" name="password" required/>
                 <br>
                 <br>
 				<button>LOG IN</button>
+                <P>Do not have account? <a style="text-decoration: underline; color: #FF4B2B; cursor:pointer;" href="SignUp.php">Sign Up</a></P>
 			</form>
 		</div>
 		<div class="overlay-container">
