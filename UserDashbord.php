@@ -14,7 +14,8 @@
             <img style="height: 70px; margin: 14px 0px 0px 030px;" src="img/icon.png" alt="">
             <input style="height: 27px; width: 50%; margin: 35px 0px 0px 70px;" type="text" id="search" name="Search" placeholder="Search for Products..">
             <button class="searchButton">Search</button>
-            <div style="margin: 20px 0px 35px 210px; display: flex; align-items: center; padding: 10px 10px 0px 0px;">
+            <div style="margin: 20px 0px 35px 10%; display: flex; align-items: center; padding: 10px 10px 0px 0px;">
+                <a href="index.php"><button style="width: 80px; margin-right: 20px;">Log Out</button></a>
                 <a href="Cart.php"><img style="width: 60px; height: 50px;" src="img/MyBasket.png" alt=""></a>
                 <sup class="cart" style="font-size: 20px; background-color: orange; padding: 15px 10px 15px 10px; border-radius:20px"><?php cart(); function cart(){ include './dbConfig.php'; echo $conn->query("select count(*) as ct from cart")->fetch_array()['ct'];} ?></sup>
             </div>
