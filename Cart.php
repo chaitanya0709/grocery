@@ -17,7 +17,7 @@
         <div class="col-10">
 
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-normal mb-0 text-black"><a href="UserDashbord.php">Shopping Cart</a></h3>
+          <a href="UserDashbord.php"><img style="width: 200px" src="img/icon.png" alt=""></a>
             <div>
               <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
             </div>
@@ -35,26 +35,35 @@
               $total = $row['storeMRP'] * $row['Qty'] + $total;
               // echo $total;
             }
+            echo '<div class="card mb-4">
+                  <div class="card-body p-4 d-flex justify-content-center">
+                  <h3>Total: <span>Rs ' . $total . '</span></h3>
+                  </div>
+                  </div>
+                  <div class="card-body d-flex justify-content-between">
+                  <a href="UserDashbord.php"><button type="button" class="btn btn-warning btn-block btn-lg">Continue Shopping</button></a>
+                  <button type="button" onclick="myFunction()" class="btn btn-warning btn-block btn-lg">Place Order</button>
+                  <script>
+                  function myFunction() {
+                  window.alert("Your order placed successfully!")
+                  }
+                  </script>
+                  </div>';
           } else {
             echo '<div class="text-center">
             <h1 class="fs-1">Your Cart Is Empty</h1>
             <p class="">look like you haven' . "'" . 't added <br> anything to your cart yet</p>
           </div>
-          ';
+          <div class="card-body d-flex flex-row-reverse">
+          <a href="UserDashbord.php"><button type="button" class="btn btn-warning btn-block btn-lg">Continue Shopping</button></a>
+          </div>';
           }
-          echo '<div class="card mb-4">
-          <div class="card-body p-4 d-flex justify-content-center">
-            <h3>Total: <span>Rs ' . $total . '</span></h3>
-          </div>
-        </div>';
           ?>
 
+          <!-- <div class="card-body d-flex">
+            <button type="button" class="btn btn-warning btn-block btn-lg">Continue Shopping</button>
+          </div> -->
 
-          <!-- -------------------- -->
-
-          <div class="card-body d-flex flex-row-reverse">
-            <button type="button" class="btn btn-warning btn-block btn-lg">Place Order</button>
-          </div>
         </div>
       </div>
     </div>
