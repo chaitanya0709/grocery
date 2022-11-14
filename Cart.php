@@ -10,9 +10,8 @@
   <title>Document</title>
 </head>
 
-<body>
-
-  <section class="h-100" style="background-color: #eee;">
+<body style="background-color: #eee;">
+  <section class="h-100">
     <div class="container h-100 py-5">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-10">
