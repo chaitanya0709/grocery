@@ -72,7 +72,7 @@
             <input type="password" placeholder="Password" name="password1" required />
             <input type="password" placeholder="Retype Password" name="password2" required />
             <br>
-            <div><button>SIGN IP</button> <a class="login" href="index.php">LOG IN<a>
+            <div><button>SIGN UP</button> <a class="login" href="index.php">LOG IN<a>
             </div>
         </form>
 
