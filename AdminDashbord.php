@@ -28,6 +28,7 @@
 
         <input type="submit" name="submit" value="Upload">
     </form>
+    <a href="index.php"><button style="width: 80px; margin-right: 20px;">Log Out</button></a>
 </body>
 
 </html>
