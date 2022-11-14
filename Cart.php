@@ -30,7 +30,7 @@
           $GLOBALS['total'] = 0;
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-              render($row['itemID'], $row['itemImg'], $row['itemName'], $row['Qty'], $row['storeMRP']);
+              render($row['itemID'], $row['itemImg'], $row['itemName'], $row['Qty'], $row['storeMRP'],$row['actualMRP']);
               // render();
               $total = $row['storeMRP'] * $row['Qty'] + $total;
               // echo $total;
@@ -75,7 +75,7 @@
 
 <?php
 
-function render($itemID, $itemImg, $itemName, $itemQty, $itemPrice)
+function render($itemID, $itemImg, $itemName, $itemQty, $itemPrice,$actualPrice)
 {
   echo '<div class="card rounded-3 mb-4">
             <div class="card-body p-4">
@@ -85,8 +85,8 @@ function render($itemID, $itemImg, $itemName, $itemQty, $itemPrice)
                 </div>
                 <div class="col-md-3 col-lg-3 col-xl-3">
                   <p class="lead fw-normal mb-2">' . $itemName . '</p>
-                  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color:
-                    </span>Grey</p>
+                  <p><span class="text-muted">MRP: </span> <s>' . $actualPrice . '</s><span class="text-muted">
+                    </span></p>
                 </div>
                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                   <button class="btn btn-link px-2" onclick="this.parentNode.querySelector(' . "'input[type=number]'" . ').stepDown()">
