@@ -1,0 +1,9 @@
+tr,th,td {
+      border: 1px solid black;
+      text-align: left;
+      background-color: orange;
+    }
+
+table {
+      border-radius: 10px;
+    }
