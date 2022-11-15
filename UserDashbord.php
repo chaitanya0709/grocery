@@ -4,6 +4,8 @@
 <head>
     <link rel="stylesheet" href="UaerDashbord.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://kit.fontawesome.com/e4907d1b30.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="footer.css">
     <title>Document</title>
 </head>
 
@@ -17,12 +19,16 @@
             <div style="margin: 20px 0px 35px 10%; display: flex; align-items: center; padding: 10px 10px 0px 0px;">
                 <a href="index.php"><button style="width: 80px; margin-right: 20px;">Log Out</button></a>
                 <a href="Cart.php"><img style="width: 60px; height: 50px;" src="img/MyBasket.png" alt=""></a>
-                <sup class="cart" style="font-size: 20px; background-color: orange; padding: 15px 10px 15px 10px; border-radius:20px"><?php cart(); function cart(){ include './dbConfig.php'; echo $conn->query("select count(*) as ct from cart")->fetch_array()['ct'];} ?></sup>
+                <sup class="cart" style="font-size: 20px; background-color: orange; padding: 15px 10px 15px 10px; border-radius:20px"><?php cart();
+                                                                                                                                        function cart()
+                                                                                                                                        {
+                                                                                                                                            include './dbConfig.php';
+                                                                                                                                            echo $conn->query("select count(*) as ct from cart")->fetch_array()['ct'];
+                                                                                                                                        } ?></sup>
             </div>
         </div>
     </div>
     <script>
-
         window.onscroll = function() {
             scrollFunction()
         };
@@ -36,14 +42,13 @@
         }
     </script>
     <br>
-    <div class="slides" >
+    <div class="slides">
         <img class="mySlides" src="https://www.bigbasket.com/media/uploads/banner_images/YXHP144_hp_fom_m_bbpl-staples_460_101022_Bangalore.jpg" style="width:100%">
         <img class="mySlides" src="https://www.bigbasket.com/media/uploads/banner_images/cp_c_Home_Kitchen_Entrypoint_Banner_400_081022.jpg" style="width:100%">
         <img class="mySlides" src="https://www.bigbasket.com/media/uploads/banner_images/cp_c_Diwali-pre-diwali_Entrypoint_Banner_400_081022.jpg" style="width:100%">
         <img class="mySlides" src="https://www.bigbasket.com/media/uploads/banner_images/cp_diwali-pre-cleaning_1130x400-041022.jpg" style="width:100%">
 
         <script>
-            
             var myIndex = 0;
             carousel();
 
@@ -69,42 +74,43 @@
 
         $sql  = "SELECT * FROM items";
         $result = $conn->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                itemcomp($row['itemImg'],$row['itemName'],$row['actualMRP'],$row['storeMRP'],$row['itemID']);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                itemcomp($row['itemImg'], $row['itemName'], $row['actualMRP'], $row['storeMRP'], $row['itemID']);
             }
-        }else{
+        } else {
             echo '<h1>Image Not Found</h1>';
         }
         ?>
     </div>
-
+    <?php include "./footer.html" ?>
 </body>
+
 </html>
 
 <?php
-function itemcomp($itemImg,$itemName,$actualMRP,$storeMRP,$itemId)
+function itemcomp($itemImg, $itemName, $actualMRP, $storeMRP, $itemId)
 {
     echo '<table class="items">
             <tr>
-                <td><img style="width: 200px; height: 175px;" class="itemsimg" src="data:image/jpg;charset=utf8;base64,'.base64_encode($itemImg).'"
+                <td><img style="width: 200px; height: 175px;" class="itemsimg" src="data:image/jpg;charset=utf8;base64,' . base64_encode($itemImg) . '"
                         alt="">
                 </td>
             </tr>
             <tr>
                 <td>Fresho <br>
-                    <samp>'.$itemName.'</samp>
+                    <samp>' . $itemName . '</samp>
                     <br><br>
                 </td>
             </tr>
             <tr>
                 <td style="border: 1px solid black;">
-                    1 kg - Rs '.$storeMRP.'
+                    1 kg - Rs ' . $storeMRP . '
                 </td>
             </tr>
             <tr>
                 <td style="font-size: 12px; background-color: rgb(243, 241, 241); padding: 5px;">
-                    MRP: <s>Rs '.$actualMRP.'</s><span style="font-size: 16px"> Rs '.$storeMRP.'</span><br>
+                    MRP: <s>Rs ' . $actualMRP . '</s><span style="font-size: 16px"> Rs ' . $storeMRP . '</span><br>
                     Standard Delivery: 18 Oct,<br>
                     3:00PM - 7:30PM<br>
                     <form action="AddToCart.php" method="post">
@@ -116,14 +122,14 @@ function itemcomp($itemImg,$itemName,$actualMRP,$storeMRP,$itemId)
                                 type="text" name="qty" value="1">
                         </div>
                         <Button class="button-33" role="button" style=" margin-left: 10px;">Add</Button>
-                        <!-- <input type="hidden" name="StoreMrp" value="'.$storeMRP.'">
-                        <input type="hidden" name="itemname" value="'.$itemName.'">
-                        <input type="hidden" name="itemImg" value="'.base64_encode($itemImg).'"> -->
-                        <input type="hidden" name="ID" value="'.$itemId.'">
+                        <!-- <input type="hidden" name="StoreMrp" value="' . $storeMRP . '">
+                        <input type="hidden" name="itemname" value="' . $itemName . '">
+                        <input type="hidden" name="itemImg" value="' . base64_encode($itemImg) . '"> -->
+                        <input type="hidden" name="ID" value="' . $itemId . '">
                     </form>
                     </div>
                 </td>
             </tr>
-        </table>';      
+        </table>';
 }
 ?>
